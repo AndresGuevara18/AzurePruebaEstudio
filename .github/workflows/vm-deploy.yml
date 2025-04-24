@@ -3,7 +3,7 @@ name: Build and Deploy to Azure VM
 on:
   push:
     branches:
-      - main  # adjust if you deploy from a different branch
+      - vm-deploy  # adjust if you deploy from a different branch
 
 jobs:
   build-and-deploy:
@@ -44,7 +44,7 @@ jobs:
           key: ${{ secrets.VM_PRIVATE_KEY }}
           port: ${{ secrets.VM_PORT }}
           script: |
-            cd ~/myapp
-            npm install --production
+            cd ~/form-app 
+            npm install 
             # If using PM2, restart the app or start if not running:
             pm2 restart app || pm2 start server.js --name app
